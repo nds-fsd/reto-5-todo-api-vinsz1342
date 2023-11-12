@@ -32,7 +32,7 @@ todoRouter.get("/todo/:id", (req, res) => {
 });
 
 todoRouter.patch("/todo/:id", (req, res) => {
-  const todoId = parseInt(req.params.id, 10);
+  const todoId = parseInt(req.params.id);
   const foundTodo = todos.find((todo) => todo.id === todoId);
 
   if (foundTodo) {
@@ -47,7 +47,7 @@ todoRouter.patch("/todo/:id", (req, res) => {
 });
 
 todoRouter.delete("/todo/:id", (req, res) => {
-  const todoId = parseInt(req.params.id, 10);
+  const todoId = parseInt(req.params.id);
   const foundIndex = todos.findIndex((todo) => todo.id === todoId);
 
   if (foundIndex !== -1) {
