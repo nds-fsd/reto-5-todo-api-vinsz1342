@@ -2,6 +2,7 @@ const express = require("express");
 const { todos } = require("../data/index");
 
 const todoRouter = express.Router();
+todoRouter.use(express.json());
 
 todoRouter.get("/todo", (req, res) => {
   res.json(todos);
