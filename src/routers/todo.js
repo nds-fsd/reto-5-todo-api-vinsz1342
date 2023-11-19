@@ -11,7 +11,7 @@ todoRouter.get("/todo", (req, res) => {
 todoRouter.post("/todo", (req, res) => {
   const { text, fecha, done } = req.body;
   const newTodo = {
-    id: todos.length + 1,
+    id: todos.length,
     text,
     fecha,
     done,
@@ -21,7 +21,7 @@ todoRouter.post("/todo", (req, res) => {
 });
 
 todoRouter.get("/todo/:id", (req, res) => {
-  const todoId = parseInt(req.params.id, 10);
+  const todoId = parseInt(req.params.id);
   const foundTodo = todos.find((todo) => todo.id === todoId);
 
   if (foundTodo) {

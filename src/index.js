@@ -1,7 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const todoRouter = require("./routers/todo");
-
+app.use(
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200,
+  })
+);
 //Le decimos a nuestra app, que vamos recibir peticiones donde el Body contiene texto en formato JSON.
 app.use(express.json());
 
