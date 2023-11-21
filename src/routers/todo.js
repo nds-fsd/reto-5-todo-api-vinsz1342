@@ -7,11 +7,21 @@ todoRouter.use(express.json());
 todoRouter.get("/todo", (req, res) => {
   res.json(todos);
 });
+const create = (req, res) => {
+  const ids = todos.map((element) => {
+    return element.id;
+  });
+  const id = Math.max(...ids);
+  const todo = req.body;
+  todo.id = id + 1;
+  todos.push(todo);
+  res.status(201).json(todo);
+};
 
-todoRouter.post("/todo", (req, res) => {
+todoRouter.post("/todo", create, (req, res) => {
   const { text, fecha, done } = req.body;
   const newTodo = {
-    id: todos.length,
+    id,
     text,
     fecha,
     done,
